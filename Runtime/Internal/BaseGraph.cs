@@ -213,7 +213,11 @@ namespace XCharts.Runtime
                 if (!isPointerInChart) return;
                 if (canvas == null) return;
                 Vector2 local;
-                if (!ScreenPointToChartPoint(Input.mousePosition, out local))
+
+                var pos3 = UnityEngine.InputSystem.Mouse.current.position.ReadValue();
+                var pos2 = new Vector2(pos3.x, pos3.y);
+
+                if (!ScreenPointToChartPoint(pos2, out local))
                 {
                     pointerPos = Vector2.zero;
                 }
